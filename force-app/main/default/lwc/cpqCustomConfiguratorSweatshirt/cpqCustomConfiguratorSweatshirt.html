@@ -1,0 +1,33 @@
+<template>
+    <div id="loading" if:false={ready}>Loading…</div>
+    <div id="display" if:true={ready}>
+            <div>
+                <div class="slds-grid slds-gutters">
+                <template for:each={sweatshirts} for:item="sweatshirt">
+                    <template lwc:if={sweatshirt.isSelected}>
+                        <div key={sweatshirt.Id} style="max-width:95%;" class="slds-col highlightSelected">
+                            <img src={sweatshirt.pictureUrl} alt="Profile photo" style="max-width:100%;max-height:90%; height: 200px; width: 480px;"/>
+                            <a href="#" onclick={handleClick}>
+                                {sweatshirt.Name}
+                            </a>
+                            <div><lightning-badge label={sweatshirt.Price}></lightning-badge></div>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <div key={sweatshirt.Id} style="max-width:95%;" class="slds-col">
+                            <img src={sweatshirt.pictureUrl} alt="Profile photo" style="max-width:100%;max-height:90%; height: 200px; width: 480px;"/>
+                            <a href="#" onclick={handleClick}>
+                                {sweatshirt.Name}
+                            </a>
+                            <div><lightning-badge label={sweatshirt.Price}></lightning-badge></div>
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <lightning-button variant="brand-outline" label="Save to Cart" title="Save Config"
+                onclick={handleSave}>
+            </lightning-button>
+            </div>
+    </div>
+    
+</template>
